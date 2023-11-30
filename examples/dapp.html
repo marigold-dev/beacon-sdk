@@ -45,10 +45,12 @@
 
     <button id="reset">Reset and Refresh</button>
     <br /><br />
+    <!---
     <button id="requestProofOfEventChallenge" disabled style="opacity: 0.5">
       Request Proof Of Event Challenge
     </button>
     <br /><br />
+    -->
     <button id="sendToSelf">Send 1 mutez to myself</button>
     <br /><br />
     <button id="sendToSelfWithPrepare">Send 1 mutez to myself (with 1s prepare delay)</button>
@@ -299,6 +301,66 @@
                     value: {
                       int: tokenId
                     }
+                  }
+                },
+                // call OBJKT to buy NFT
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '100',
+                  destination: 'KT1PAD717n3yvt5z3B7gZopZo5Qw5UZgVkrz',
+                  parameters: {
+                    entrypoint: 'fulfill_ask',
+                    value: { "prim": "Pair", "args": [ { "int": "26" }, { "prim": "None" } ] }
+                  }
+                },
+                // call default entrypoint
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '100',
+                  destination: 'KT1Ck3dP5eFjLLZDqaBNjFwKnHQxyaGQJk3r',
+                  parameters: {
+                    entrypoint: 'default',
+                    value: {"prim":"Unit"}
+                  }
+                },
+                // one FA2 token
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '0',
+                  destination: 'KT18wQKZrLf8wbi7TEf4RynBrEwWe2HPTbZb',
+                  parameters: {
+                    entrypoint: 'transfer',
+                    value: [ { "prim": "Pair", "args": [ { "bytes": "0190af203a2d2b2c092fc0df6a6cf1e47b4113d36400" }, [ { "prim": "Pair", "args": [ { "bytes": "000101e9a6d43af927384fcd1068ffc12e461e219f20" }, { "prim": "Pair", "args": [ { "int": "2" }, { "int": "1" } ] } ] } ] ] } ]
+                  }
+                },
+                // FA1.2 token
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '0',
+                  destination: 'KT1Q4ecagDAmqiY3ajvtwfNZyChWy86W7pzb',
+                  parameters: {
+                    entrypoint: 'transfer',
+                    value: { "prim": "Pair", "args": [ { "bytes": "0190af203a2d2b2c092fc0df6a6cf1e47b4113d36400" }, { "prim": "Pair", "args": [ { "bytes": "000101e9a6d43af927384fcd1068ffc12e461e219f20" }, { "int": "1000000" } ] } ] }
+                  }
+                },
+                // multiple FA2 token
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '0',
+                  destination: 'KT1Gh6T9CjpxEV6WxCzgExhrATEYtcLN5Fdp',
+                  parameters: {
+                    entrypoint: 'transfer',
+                    value: [ { "prim": "Pair", "args": [ { "bytes": "0190af203a2d2b2c092fc0df6a6cf1e47b4113d36400" }, [ { "prim": "Pair", "args": [ { "bytes": "000101e9a6d43af927384fcd1068ffc12e461e219f20" }, { "prim": "Pair", "args": [ { "int": "125" }, { "int": "1" } ] } ] }, { "prim": "Pair", "args": [ { "bytes": "000101e9a6d43af927384fcd1068ffc12e461e219f20" }, { "prim": "Pair", "args": [ { "int": "0" }, { "int": "1" } ] } ] } ] ] } ]
+                  }
+                },
+                // FA1.2 approved
+                {
+                  kind: beacon.TezosOperationType.TRANSACTION,
+                  amount: '0',
+                  destination: 'KT1Q4ecagDAmqiY3ajvtwfNZyChWy86W7pzb',
+                  parameters: {
+                    entrypoint: 'approve',
+                    value: { "prim": "Pair", "args": [ { "bytes": "0190af203a2d2b2c092fc0df6a6cf1e47b4113d36400" }, { "int": "1000000" } ] }
                   }
                 }
               ]

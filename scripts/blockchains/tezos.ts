@@ -78,6 +78,16 @@ export const tezosWebList: WebApp[] = [
     }
   },
   {
+    key: 'tzsafe_web',
+    name: 'Tzsafe',
+    shortName: 'TzSafe',
+    color: '',
+    logo: 'tzsafe.svg',
+    links: {
+      [NetworkType.MAINNET]: 'https://tzsafe.marigold.dev/',
+      [NetworkType.GHOSTNET]: 'https://ghostnet.tzsafe.marigold.dev/'
+  }},
+  {
     key: 'kukai_web',
     name: 'Kukai Wallet',
     shortName: 'Kukai',
